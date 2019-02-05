@@ -1,0 +1,32 @@
+<div class="row" *ngIf="loading">
+  <div class="col">
+    <div class="alert alert-info text-center">
+      <i class="fa fa-sync fa-spin fa-2x"></i>
+      <h2>Cargando...</h2>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="error">
+  <div class="col">
+    <div class="alert alert-danger text-center">
+      <i class="fa fa-times fa-2x"></i>
+      <h2>Error: {{error.status}}</h2>
+      <p>
+        {{error.message}}
+        <br><br>
+        {{error.url}}
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="list-group" *ngIf="!loading">
+  <button type="button" class="list-group-item list-group-item-action active">
+    Usuarios
+  </button>
+  <a [routerLink]="['/usuario', user.id]" *ngFor="let user of users" type="button" class="list-group-item list-group-item-action">
+    <h3 class="texto float-left">{{user.first_name}} {{user.last_name}}</h3>
+    <img class="img rounded-circle float-right" [src]="user.avatar">
+  </a>
+ </div>
